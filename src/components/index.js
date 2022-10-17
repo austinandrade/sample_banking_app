@@ -8,6 +8,9 @@ import Stats from "./Stats";
 import Footer from "./Footer";
 import Testimonials from "./Testimonials";
 import Hero from "./Hero";
+import ClientsPage from "./ClientsPage";
+import FeaturesPage from "./FeaturesPage";
+import HomePage from "./HomePage";
 
 export {
   Navbar,
@@ -20,4 +23,7 @@ export {
   Footer,
   Testimonials,
   Hero,
+  ClientsPage,
+  FeaturesPage,
+  HomePage
 };

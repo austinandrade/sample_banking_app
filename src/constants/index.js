@@ -1,22 +1,18 @@
-import { people01, people02, people03, facebook, instagram, linkedin, twitter, airbnb, binance, coinbase, dropbox, send, shield, star  } from "../assets";
+import { people01, people02, people03, facebook, instagram, linkedin, twitter, airbnb, binance, coinbase, dropbox, send, shield, star } from "../assets";
 
 export const navLinks = [
   {
-    id: "home",
-    title: "Home",
+    name: "HomePage",
+    path: '/'
   },
   {
-    id: "features",
-    title: "Features",
+    name: "Features",
+    path: '/features'
   },
   {
-    id: "product",
-    title: "Product",
-  },
-  {
-    id: "clients",
-    title: "Clients",
-  },
+    name: "Clients",
+    path: '/clients'
+  }
 ];
 
 export const features = [
