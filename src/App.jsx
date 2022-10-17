@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import styles from './style';
-import { Navbar, Hero, Stats, Business, Billing, CardDeal, Testimonials, Clients, CTA, Footer, HomePage, FeaturesPage, ClientsPage} from './components';
+import { Navbar, HomePage, FeaturesPage, ClientsPage} from './components';
 
 const App = () => (
   <BrowserRouter>
@@ -9,21 +9,6 @@ const App = () => (
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar/>
-        </div>
-      </div>
-      {/* Hero Component */}
-      <div className={`bg-primary ${styles.flexStart}`}>
-        <div className={`${styles.boxWidth}`}>
-          <Hero/>
-        </div>
-      </div>
-
-      {/* proper rendering of all stacking components */}
-      <div className={`bg-primary ${styles.paddingX} ${styles.flexStart}`}>
-        <div className={`${styles.boxWidth}`}>
-          <Stats/>
-          <CTA />
-          <Footer/>
         </div>
       </div>
       <Routes>
