@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import styles from '../style'
-import { CTA, Footer, Clients, Testimonials } from './index.js'
+import ErrorFallback from './ErrorBoundary'
+
+const CTA = React.lazy(() => import('./CTA'))
+const Footer = React.lazy(() => import('./Footer'))
+const Clients = React.lazy(() => import('./Clients'))
+const Testimonials = React.lazy(() => import('./Testimonials'))
+
 
 const ClientsPage = () => {
   return (
@@ -8,10 +15,14 @@ const ClientsPage = () => {
       {/* proper rendering of all stacking components */}
       <div className={`bg-primary ${styles.paddingX} ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
-          <Testimonials/> 
-          <Clients/>        
-          <CTA/>
-          <Footer/>
+          <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => {}}>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Testimonials/> 
+              <Clients/>        
+              <CTA/>
+              <Footer/>
+            </Suspense>
+          </ErrorBoundary>
         </div>
       </div>
     </div>

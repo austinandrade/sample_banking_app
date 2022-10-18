@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import styles from '../style'
-import { Hero, Stats, CTA, Footer } from './index.js';
+import ErrorFallback from './ErrorBoundary';
+
+const Hero = React.lazy(() => import('./Hero'));
+const Stats = React.lazy(() => import('./Stats'));
+const CTA = React.lazy(() => import('./CTA'));
+const Footer = React.lazy(() => import('./Footer'));
 
 
 const HomePage = () => {
@@ -8,16 +14,24 @@ const HomePage = () => {
     <div>
       <div className={`bg-primary ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
-          <Hero/>
+          <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => {}}>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Hero/>
+            </Suspense>
+          </ErrorBoundary>
         </div>
       </div>
 
       {/* proper rendering of all stacking components */}
       <div className={`bg-primary ${styles.paddingX} ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
-          <Stats/>
-          <CTA />
-          <Footer/>
+        <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => {}}>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Stats/>
+            <CTA />
+            <Footer/>
+          </Suspense>
+        </ErrorBoundary>
         </div>
       </div>
     </div>
