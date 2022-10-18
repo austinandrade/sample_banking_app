@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import AsyncImage from './AsyncImage'
 import { card } from '../assets'  
 import styles, { layout } from '../style'
 import Button from './Button'
@@ -19,7 +18,7 @@ const CardDeal = () => (
     </div>
 
     <div className={layout.sectionImg}>
-      <AsyncImage src={card} alt="card" className='w-[100%] h-[100%]' />
+      <img src={card} alt="card" className='w-[100%] h-[100%]' />
     </div>
   </section>
 )
