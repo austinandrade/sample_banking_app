@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import styles from './style';
-import { Navbar, HomePage, FeaturesPage, ClientsPage} from './components';
+import Navbar from "./components/Navbar";
+
+const HomePage = React.lazy(() => import('./components/HomePage'));
+const FeaturesPage = React.lazy(() => import('./components/FeaturesPage'));
+const ClientsPage = React.lazy(() => import('./components/ClientsPage'));
 
 const App = () => (
   <BrowserRouter>
@@ -11,13 +15,13 @@ const App = () => (
           <Navbar/>
         </div>
       </div>
-      <Routes>
-        <Route index element={<HomePage/>}/>
-        <Route path='Features' element={<FeaturesPage/>}/>
-        <Route path='Clients' element={<ClientsPage/>}/>
-        
-      </Routes>
-
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+            <Route index element={<HomePage/>}/>
+            <Route path='Features' element={<FeaturesPage/>}/>
+            <Route path='Clients' element={<ClientsPage/>}/>
+        </Routes>
+      </Suspense>
     </div>
   </BrowserRouter>
  );
